@@ -1,0 +1,1 @@
+![nummus-logo](LOGO.svg)
