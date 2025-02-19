@@ -33,4 +33,11 @@ public class UserService {
       newUser.getBirth().getTime()
     );
   }
+
+  public User findById(UUID id) {
+    User user = userRepository.findById(id)
+      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User Not Found"));
+
+    return user;
+  }
 }

@@ -34,7 +34,7 @@ public class User {
 
   public User(CreateUserDTO createUser) {
     this.email = createUser.email();
-    this.fullName = createUser.fullName();
+    this.fullName = createUser.fullName().toUpperCase();
     this.password = createUser.password();
     this.birth = new Date(createUser.birth());
   }

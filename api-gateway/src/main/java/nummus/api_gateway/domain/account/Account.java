@@ -1,6 +1,5 @@
 package nummus.api_gateway.domain.account;
 
-import java.util.Date;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
@@ -24,10 +23,13 @@ public class Account {
   @GeneratedValue
   private UUID id;
 
-  private long balance;
-  private Date createdAt;
+  private Long balance = 0L;
 
   @ManyToOne
   @JoinColumn(name = "userId")
   private User user;
+
+  public Account(User user) {
+    this.user = user;
+  }
 }
