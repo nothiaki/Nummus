@@ -1,6 +1,6 @@
 package nummus.api_gateway.domain.user;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,9 +26,16 @@ public class User {
 
   private String email;
   private String fullName;
-  private LocalDate birth;
+  private Date birth;
   private String password;
 
   @OneToMany(mappedBy = "user")
   private List<Account> accounts;
+
+  public User(CreateUserDTO createUser) {
+    this.email = createUser.email();
+    this.fullName = createUser.fullName();
+    this.password = createUser.password();
+    this.birth = new Date(createUser.birth());
+  }
 }

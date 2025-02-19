@@ -18,5 +18,5 @@ public record CreateUserDTO(
 
   @NotEmpty(message = "Password should not be empty")
   @Size(min = 6, max = 26)
-  String Password
+  String password
 ) {}
