@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +19,7 @@ import nummus.api_gateway.domain.user.User;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Account {
   @Id
   @GeneratedValue
@@ -26,7 +28,7 @@ public class Account {
   private Long balance = 0L;
 
   @ManyToOne
-  @JoinColumn(name = "userId")
+  @JoinColumn(name = "userID")
   private User user;
 
   public Account(User user) {

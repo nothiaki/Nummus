@@ -4,6 +4,5 @@ import java.util.UUID;
 
 public record ResponseAccountDTO(
   UUID id,
-  Long balance,
-  UUID userId
+  Long balance
 ) {}
