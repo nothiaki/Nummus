@@ -21,7 +21,7 @@ public class UserService {
     
     userRepository.findOneByEmail(createUser.email())
       .ifPresent(user -> {
-        throw new ResponseStatusException(HttpStatus.CONFLICT, "Email Already Exists");
+        throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already exists");
       });
 
     User newUser = userRepository.save(new User(createUser));
@@ -36,7 +36,7 @@ public class UserService {
 
   public User findById(UUID id) {
     User user = userRepository.findById(id)
-      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User Not Found"));
+      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
 
     return user;
   }

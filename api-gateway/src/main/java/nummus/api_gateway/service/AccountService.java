@@ -40,7 +40,7 @@ public class AccountService {
 
   public ResponseAccountDTO findOne(UUID id) {
     Account account = accountRepository.findById(id)
-      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Account Not Found"));
+      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Account not found"));
 
 
     return new ResponseAccountDTO(

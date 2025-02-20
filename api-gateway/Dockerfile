@@ -1,6 +1,6 @@
 FROM eclipse-temurin:17-jdk-focal
  
-WORKDIR /app
+WORKDIR /api-gateway
  
 COPY .mvn/ .mvn
 
