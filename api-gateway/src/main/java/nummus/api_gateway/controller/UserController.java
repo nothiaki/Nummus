@@ -2,6 +2,7 @@ package nummus.api_gateway.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ class UserController {
   private UserService userService;
 
   @PostMapping
-  public ResponseEntity<ResponseUserDTO> create(@Valid @RequestBody CreateUserDTO createUser) {
+  public ResponseEntity<ResponseUserDTO> create(@RequestBody @Valid CreateUserDTO createUser) {
     ResponseUserDTO user = userService.create(createUser);
     return ResponseEntity.ok(user);
   }
