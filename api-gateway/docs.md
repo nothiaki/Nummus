@@ -25,5 +25,7 @@
   "payerID": String,
   "payeeID": String,
   "amount": Long
+  "type": TransactionType
 }
 ```
+TransactionType = DEBIT, CREDIT, PIX
