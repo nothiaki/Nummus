@@ -11,7 +11,10 @@ public record CreateTransactionDTO(
   String payeeID,
 
   @NotEmpty(message = "Amount should not be empty")
-  Long amount
+  Long amount,
+
+  @NotEmpty(message = "TransactionType should not be empty")
+  TransactionType type
 ) {}
 
 

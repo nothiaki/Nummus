@@ -24,6 +24,7 @@ public class Transaction {
   private String payerID;
   private String payeeID;
   private Long amount;
+  private TransactionType type;
   private Date createdAt;
 
   public Transaction(CreateTransactionDTO createTransaction) {
