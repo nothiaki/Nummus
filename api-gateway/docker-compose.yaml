@@ -5,11 +5,11 @@ services:
     container_name: api-gateway
     ports:
       - 8080:8080
-    restart: always
+    restart: no
     depends_on:
       - postgres
     volumes:
-      - ./:/api-gateway
+      - api-gateway:/api-gateway
     networks:
       - dev
 
@@ -18,7 +18,7 @@ services:
     container_name: postgres-api-gateway
     ports:
       - 5432:5432
-    restart: always
+    restart: no
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_USER: postgres
@@ -46,7 +46,7 @@ services:
       KAFKA_RESTART_DELAY: "5"
       ZOOKEEPER_AUTOPURGE_PURGE_INTERVAL: "0"
     volumes:
-      - ./data/kafka/data:/var/lib/kafka/data
+      - kafka-data:/var/lib/kafka/data
     networks:
       - dev
     ulimits:
@@ -61,4 +61,6 @@ networks:
 
 volumes:
 
+  api-gateway:
   postgres_data:
+  kafka-data:
