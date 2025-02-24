@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import nummus.api_gateway.domain.sagaHistory.SagaHistory;
 import nummus.api_gateway.domain.transaction.CreateTransactionDTO;
 import nummus.api_gateway.domain.transaction.Transaction;
 import nummus.api_gateway.messaging.producer.MessagingProducerStrategy;
@@ -16,14 +17,19 @@ public class TransactionService {
 
   @Autowired
   @Qualifier("kafkaProducer")
-  private MessagingProducerStrategy<Transaction> messagingProducer;
+  private MessagingProducerStrategy<SagaHistory> messagingProducer;
+
+  @Autowired
+  SagaHistoryService sagaHistoryService;
 
   public Transaction create(CreateTransactionDTO createTransaction) {
     Transaction transaction = new Transaction(createTransaction);
 
     Transaction newTransaction = transactionRepository.save(transaction);
 
-    messagingProducer.send(newTransaction);
+    SagaHistory sagaHistory = sagaHistoryService.createSagaHistory(newTransaction);
+
+    messagingProducer.send(sagaHistory);
 
     return newTransaction;
   }
