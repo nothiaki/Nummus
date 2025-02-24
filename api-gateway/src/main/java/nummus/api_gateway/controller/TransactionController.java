@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import nummus.api_gateway.domain.transaction.CreateTransactionDTO;
-import nummus.api_gateway.domain.transaction.Transaction;
+import nummus.api_gateway.domain.transaction.TransactionResponseWithSagaHistoryIDDTO;
 import nummus.api_gateway.service.TransactionService;
 
 @RestController
@@ -19,10 +19,10 @@ public class TransactionController {
   TransactionService transactionService;
 
   @PostMapping
-  public ResponseEntity<Transaction> create(
+  public ResponseEntity<TransactionResponseWithSagaHistoryIDDTO> create(
     @RequestBody @Valid CreateTransactionDTO createTransactionDTO
   ) {
-    Transaction transaction = transactionService.create(createTransactionDTO);
+    TransactionResponseWithSagaHistoryIDDTO transaction = transactionService.create(createTransactionDTO);
     return ResponseEntity.ok(transaction);
   }
 }

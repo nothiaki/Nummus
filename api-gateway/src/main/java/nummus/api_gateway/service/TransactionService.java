@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import nummus.api_gateway.domain.sagaHistory.SagaHistory;
 import nummus.api_gateway.domain.transaction.CreateTransactionDTO;
 import nummus.api_gateway.domain.transaction.Transaction;
+import nummus.api_gateway.domain.transaction.TransactionResponseWithSagaHistoryIDDTO;
 import nummus.api_gateway.messaging.producer.MessagingProducerStrategy;
 import nummus.api_gateway.repository.TransactionRepository;
 
@@ -22,7 +23,7 @@ public class TransactionService {
   @Autowired
   SagaHistoryService sagaHistoryService;
 
-  public Transaction create(CreateTransactionDTO createTransaction) {
+  public TransactionResponseWithSagaHistoryIDDTO create(CreateTransactionDTO createTransaction) {
     Transaction transaction = new Transaction(createTransaction);
 
     Transaction newTransaction = transactionRepository.save(transaction);
@@ -31,6 +32,6 @@ public class TransactionService {
 
     messagingProducer.send(sagaHistory);
 
-    return newTransaction;
+    return new TransactionResponseWithSagaHistoryIDDTO(newTransaction, sagaHistory.getId());
   }
 }

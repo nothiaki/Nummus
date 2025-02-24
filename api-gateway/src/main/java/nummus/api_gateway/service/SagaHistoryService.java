@@ -1,9 +1,12 @@
 package nummus.api_gateway.service;
 
 import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import nummus.api_gateway.domain.sagaHistory.Operation;
 import nummus.api_gateway.domain.sagaHistory.SagaHistory;
@@ -39,6 +42,13 @@ public class SagaHistoryService {
     sagaHistory.addOperationToOperationHistory(operation);
 
     sagaHistoryRepository.save(sagaHistory);
+
+    return sagaHistory;
+  }
+
+  public SagaHistory findOne(UUID id) {
+    SagaHistory sagaHistory = sagaHistoryRepository.findById(id)
+      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found id for saga history"));
 
     return sagaHistory;
   }
