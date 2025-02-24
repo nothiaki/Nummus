@@ -33,11 +33,11 @@ public class KafkaConfiguration {
     @Value("${spring.kafka.consumer.auto-offset-reset}")
     private String autoOffsetReset;
 
-    @Value("${spring.kafka.topic.start-saga}")
-    private String startSagaTopic;
+    @Value("${spring.kafka.topic.ms-validation-transaction-start-saga}")
+    private String msValidationTransactionStartSagaTopic;
 
-    @Value("${spring.kafka.topic.end-saga}")
-    private String endSagaTopic;
+    @Value("${spring.kafka.topic.ms-validation-transaction-end-saga}")
+    private String msValidationTransactionEndSagaTopic;
 
     @Bean
     public ConsumerFactory<String, String> consumerFactory() {
@@ -82,11 +82,11 @@ public class KafkaConfiguration {
 
     @Bean
     public NewTopic startSagaTopic() {
-        return buildTopic(startSagaTopic);
+        return buildTopic(msValidationTransactionStartSagaTopic);
     }
 
     @Bean
     public NewTopic notifyEndingTopic() {
-        return buildTopic(endSagaTopic);
+        return buildTopic(msValidationTransactionEndSagaTopic);
     }
 }

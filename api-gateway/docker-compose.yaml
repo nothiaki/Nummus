@@ -9,7 +9,7 @@ services:
     depends_on:
       - postgres
     volumes:
-      - api-gateway:/api-gateway
+      - ./:/api-gateway
     networks:
       - dev
 
@@ -61,6 +61,6 @@ networks:
 
 volumes:
 
-  api-gateway:
+  # api-gateway:
   postgres_data:
   kafka-data:

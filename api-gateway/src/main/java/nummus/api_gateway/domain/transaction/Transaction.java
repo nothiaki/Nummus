@@ -31,6 +31,7 @@ public class Transaction {
     this.payerID = createTransaction.payerID();
     this.payeeID = createTransaction.payeeID();
     this.amount = createTransaction.amount();
+    this.type = createTransaction.type();
     this.createdAt = new Date();
   }
 }
