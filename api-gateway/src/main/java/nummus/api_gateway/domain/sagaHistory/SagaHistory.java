@@ -18,6 +18,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import nummus.api_gateway.domain.transaction.Transaction;
+import nummus.api_gateway.enumerator.ESagaStatus;
 
 import static org.springframework.util.ObjectUtils.isEmpty;
 
@@ -42,6 +43,7 @@ public class SagaHistory {
 
   private String source;
   private Date createdAt;
+  private ESagaStatus status;
 
   public void addOperationToOperationHistory(Operation operation) {
     if (isEmpty(operationHistory)) {
