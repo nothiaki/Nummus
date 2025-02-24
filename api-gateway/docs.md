@@ -34,3 +34,7 @@ TransactionType = DEBIT, CREDIT, PIX
 ## SAGA HISTORY
 
 ##### find one saga history GET /saga-history/{ID}
+
+
+
+## KAFKA DOC
